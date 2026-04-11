@@ -42,4 +42,7 @@ public class UserService {
 		return userMapper.toDTO(user);
 	}
 
+	public String admin() {
+		return "Acesso ADMIN";
+	}
 }

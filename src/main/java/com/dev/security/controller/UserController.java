@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api")
 public class UserController {
 
 	private final UserService userService;
@@ -22,12 +22,12 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping
+	@GetMapping("/users")
 	public ResponseEntity<List<UserResponseDTO>> listAllUsers() {
 		return ResponseEntity.ok(userService.listAllUsers());
 	}
 
-	@PostMapping
+	@PostMapping("/users")
 	public ResponseEntity<UserResponseDTO> createUser(
 	@RequestBody UserRequestDTO userRequestDTO) {
 		return ResponseEntity
@@ -35,4 +35,8 @@ public class UserController {
 			.body(userService.createUser(userRequestDTO));
 	}
 
+	@GetMapping("/admin")
+	public ResponseEntity<String> admin() {
+		return ResponseEntity.ok(userService.admin());
+	}
 }
