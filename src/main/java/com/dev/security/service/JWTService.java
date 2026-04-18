@@ -2,18 +2,20 @@ package com.dev.security.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JWTService {
 
-    private final String SECRET_KEY = "LinuxDebianUbuntuMintArchKaliPopLinuxDebianUbuntu";
+    @Value("${api.security.token.secret_key}")
+    private String secret_key;
 
     public String generateToken(String email) {
         return Jwts
             .builder()
             .setSubject(email)
-            .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+            .signWith(SignatureAlgorithm.HS256, secret_key)
             .compact();
     }
 }

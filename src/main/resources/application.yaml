@@ -12,5 +12,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+api:
+  security:
+    token:
+      secret_key: ${TOKEN_SECRET_KEY}
 server:
   port: 8080
