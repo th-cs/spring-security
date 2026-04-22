@@ -12,6 +12,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  output:
+    ansi:
+      enabled: always
 api:
   security:
     token:
