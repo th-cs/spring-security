@@ -18,4 +18,13 @@ public class JWTService {
             .signWith(SignatureAlgorithm.HS256, secret_key)
             .compact();
     }
+
+    public String validateToken(String token) {
+        return Jwts.parser()
+            .setSigningKey(secret_key)
+            .parseClaimsJws(token)
+            .getBody()
+            .getSubject();
+    }
+
 }
